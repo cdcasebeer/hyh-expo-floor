@@ -8,11 +8,11 @@ Serve this folder with any static web server and open the resulting URL on deskt
 
 ## Supabase setup
 
-1. Set `supabaseUrl` and `supabaseAnonKey` in `config.js`.
-2. Create a `vendors` table with `id text primary key`, `name text`, `booths text[]`, `contact text`, and `phone text`.
-3. Enable Row Level Security and Realtime for `vendors`, then add policies for your organization.
+1. Run `supabase/setup.sql` once in the Supabase SQL Editor.
+2. Set `supabaseUrl` and `supabasePublishableKey` in `config.js`.
+3. In Supabase Auth URL Configuration, set the Site URL to the production Netlify URL.
 
-With credentials present, the app reads the table, upserts edits, and subscribes to realtime changes. Do not place a service-role key in this client. The UI role selector provides Viewer, Manager, and Admin modes; Viewer is read-only.
+Authenticated users receive realtime data. Viewer accounts are read-only; Manager and Admin accounts may edit. Only Admin accounts may delete or change roles. Do not place a secret or service-role key in this client.
 
 ## Data validation
 
